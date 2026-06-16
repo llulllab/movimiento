@@ -1,0 +1,403 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Movimiento — Beautiful Shoes. Exceptional Comfort.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#FFFFFF; --surface:#FBF6F7; --surface-2:#F5EAED; --line:#EDE0E3;
+    --ink:#241F20; --ink-soft:#6B6064; --muted:#9E939A;
+    --accent:#A04C5A; --accent-dark:#7E3A45; --blush:#E7CBD0; --sale:#8E2F3F;
+    --maxw:1240px; --pad:40px;
+    --head:'Tenor Sans',serif;
+  }
+  *{box-sizing:border-box}
+  body{font:400 16px/1.65 'DM Sans',system-ui,sans-serif;margin:0;color:var(--ink-soft);background:var(--bg);-webkit-font-smoothing:antialiased}
+  h1,h2,h3{font-family:var(--head);color:var(--ink);font-weight:400;letter-spacing:.01em;margin:0 0 .4em;line-height:1.15}
+  a{color:var(--ink);text-decoration:none}
+  a:hover{color:var(--accent)}
+  img{display:block;max-width:100%}
+  .eyebrow{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);font-weight:600}
+  /* movement line signature */
+  .mline{display:block;width:120px;height:16px;margin:14px auto;overflow:visible}
+  .mline path{fill:none;stroke:var(--accent);stroke-width:1.4}
+  header{display:flex;gap:28px;align-items:center;padding:20px var(--pad);border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(255,255,255,.94);backdrop-filter:saturate(1.1) blur(8px);z-index:20}
+  header .wordmark{font-family:var(--head);font-size:20px;letter-spacing:.28em;color:var(--ink)}
+  header .nav{font-size:13px;letter-spacing:.04em;color:var(--ink-soft)}
+  main{padding:0 var(--pad);max-width:var(--maxw);margin:0 auto}
+  section.block{margin:80px 0}
+  /* hero */
+  .hero{background:linear-gradient(180deg,var(--surface) 0%,#fff 100%);margin:0 calc(-1 * var(--pad)) 56px;padding:110px var(--pad) 96px;text-align:center}
+  .hero h1{font-size:clamp(2.4rem,5.5vw,4.2rem);line-height:1.08;margin-bottom:.1em;color:var(--ink)}
+  .hero p{font-size:clamp(1rem,1.6vw,1.15rem);color:var(--ink-soft);max-width:520px;margin:8px auto 30px}
+  .hero .cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+  /* value props */
+  .vprops{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;text-align:center;margin:72px 0}
+  .vprops .vp h3{font-size:18px;margin-bottom:6px}
+  .vprops .vp p{font-size:14px;color:var(--ink-soft);margin:0}
+  .statement{text-align:center;max-width:680px;margin:0 auto;padding:8px 0}
+  .statement p{font-family:var(--head);font-size:clamp(1.3rem,2.4vw,1.9rem);line-height:1.4;color:var(--ink)}
+  /* filters */
+  .filters{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:40px;align-items:center;background:var(--surface);padding:16px 20px;border-radius:3px}
+  .filters input,.filters select,#search{padding:10px 12px;border:1px solid var(--line);border-radius:2px;background:#fff;font:inherit;font-size:14px;color:var(--ink)}
+  #search{margin-left:auto;min-width:200px}
+  /* grid + cards (borderless, 4:5) */
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:36px 28px}
+  .card a{display:block}
+  .card .imgwrap{aspect-ratio:4/5;background:var(--surface-2);border-radius:3px;overflow:hidden}
+  .card .imgwrap img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.22,1,.36,1)}
+  .card a:hover .imgwrap img{transform:scale(1.04)}
+  .card .title{margin-top:14px;color:var(--ink);font-size:15px;transition:color .2s}
+  .card a:hover .title{color:var(--accent)}
+  .card .price{margin-top:4px;color:var(--ink);font-size:14px}
+  .card .price s{color:var(--muted);margin-right:6px}
+  .card .meta{margin-top:4px;color:var(--muted);font-size:12px;letter-spacing:.02em}
+  /* buttons — near-square (2px), rosewood */
+  button{cursor:pointer;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;padding:11px 18px;border:1px solid var(--line);border-radius:2px;background:#fff;color:var(--ink);transition:background .2s,border-color .2s,color .2s,transform .15s}
+  button:hover{border-color:var(--ink)}
+  button.primary{background:var(--accent);color:#fff;border-color:var(--accent);padding:15px 30px;letter-spacing:.06em;text-transform:uppercase;font-size:12px}
+  button.primary:hover{background:var(--accent-dark);border-color:var(--accent-dark);transform:translateY(-1px)}
+  button.ghost{background:transparent;border:1px solid var(--ink);padding:15px 30px;letter-spacing:.06em;text-transform:uppercase;font-size:12px}
+  button.ghost:hover{background:var(--ink);color:#fff}
+  /* drawers */
+  .badge{background:var(--accent);color:#fff;border-radius:10px;padding:0 6px;font-size:11px}
+  .scrim{position:fixed;inset:0;background:rgba(36,31,32,.32);opacity:0;pointer-events:none;transition:opacity .3s;z-index:25}
+  .scrim.open{opacity:1;pointer-events:auto}
+  .drawer{position:fixed;top:0;right:0;width:390px;max-width:92vw;height:100%;background:#fff;border-left:1px solid var(--line);transform:translateX(100%);transition:transform .4s cubic-bezier(.16,1,.3,1);overflow:auto;padding:28px;z-index:30}
+  .drawer.open{transform:none}
+  .drawer h3{font-size:20px}
+  .row{display:flex;justify-content:space-between;gap:8px;align-items:center;border-bottom:1px solid var(--line);padding:14px 0}
+  .note{background:var(--surface-2);border:1px solid var(--line);padding:14px;margin:14px 0;border-radius:2px;font-size:14px;color:var(--ink-soft)}
+  .muted{color:var(--muted);font-size:13px}
+  /* option chips (near-square) */
+  .opt{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 14px}
+  .opt button{min-width:46px;height:46px;padding:0 12px;border:1px solid var(--line);border-radius:2px;background:#fff;text-transform:none;letter-spacing:0;font-size:13px}
+  .opt button.sel{background:var(--ink);color:#fff;border-color:var(--ink)}
+  /* newsletter band */
+  .newsletter{background:var(--surface-2);margin:96px calc(-1 * var(--pad)) 0;padding:72px var(--pad);text-align:center}
+  .newsletter h3{font-size:26px}
+  .newsletter .field{display:flex;gap:10px;max-width:460px;margin:16px auto 0}
+  .newsletter input{flex:1;padding:15px;border:1px solid var(--line);border-radius:2px;background:#fff;font:inherit}
+  details{border-top:1px solid var(--line);padding:15px 0}
+  details summary{cursor:pointer;color:var(--ink);font-weight:500;list-style:none;display:flex;justify-content:space-between;align-items:center}
+  details summary::-webkit-details-marker{display:none}
+  details summary::after{content:"+";color:var(--accent);font-weight:400}
+  details[open] summary::after{content:"\2013"}
+  header.scrolled{box-shadow:0 1px 14px rgba(36,31,32,.06)}
+  header .nav.active{color:var(--accent)}
+  header .hgroup{display:flex;gap:22px;align-items:center}
+  header .langsel{border:none;background:transparent;font:inherit;font-size:13px;color:var(--ink-soft);cursor:pointer;padding:4px}
+  header .iconlink{cursor:pointer}
+  #menuBtn{display:none}
+  /* lifestyle banner */
+  .lifestyle{background:var(--surface);margin:96px calc(-1 * var(--pad)) 0;padding:80px var(--pad);text-align:center}
+  .lifestyle h2{font-size:clamp(1.8rem,3vw,2.6rem)}
+  .lifestyle p{max-width:560px;margin:8px auto 0;color:var(--ink-soft)}
+  /* instagram strip */
+  .insta{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin-top:24px}
+  .insta .cell{aspect-ratio:1;background:var(--surface-2);border-radius:2px;overflow:hidden}
+  .insta img{width:100%;height:100%;object-fit:cover}
+  /* content page */
+  .page{max-width:760px;margin:0 auto}
+  .page h1{font-size:clamp(1.8rem,3vw,2.4rem);margin-bottom:8px}
+  .page p{font-size:16px;line-height:1.8;color:var(--ink-soft)}
+  .page .lead{font-family:var(--head);font-size:clamp(1.3rem,2.4vw,1.8rem);color:var(--ink);line-height:1.4;margin-bottom:18px}
+  .page .form{display:grid;gap:10px;max-width:460px;margin-top:18px}
+  .page .form input,.page .form textarea{padding:12px;border:1px solid var(--line);border-radius:2px;font:inherit;background:#fff}
+  .faqitem{border-top:1px solid var(--line);padding:16px 0}
+  .faqitem h3{font-size:17px;margin:0 0 4px}
+  .faqitem p{margin:0;font-size:15px}
+  /* footer */
+  footer{background:var(--ink);color:#cfc3c6;margin-top:96px;padding:64px var(--pad) 32px}
+  footer .fwrap{max-width:var(--maxw);margin:0 auto;display:grid;grid-template-columns:1.4fr repeat(3,1fr);gap:40px}
+  footer .fbrand .wordmark{font-family:var(--head);font-size:22px;letter-spacing:.28em;color:#fff;display:block;margin-bottom:10px}
+  footer .fbrand p{font-size:14px;color:#a89ca0;max-width:260px}
+  footer h4{font-family:'DM Sans';font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#fff;margin:0 0 14px}
+  footer ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:9px}
+  footer a{color:#cfc3c6;font-size:14px}
+  footer a:hover{color:#fff}
+  footer .fbottom{max-width:var(--maxw);margin:40px auto 0;padding-top:24px;border-top:1px solid rgba(255,255,255,.12);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:13px;color:#a89ca0}
+  /* about */
+  .about{max-width:720px;margin:0 auto;text-align:center}
+  .about p{font-size:17px;line-height:1.8;color:var(--ink-soft)}
+  .about .lead{font-family:var(--head);font-size:clamp(1.4rem,2.6vw,2rem);color:var(--ink);line-height:1.4;margin-bottom:24px}
+  /* PDP */
+  .breadcrumb{font-size:12px;letter-spacing:.04em;color:var(--muted);margin:8px 0 28px}
+  .breadcrumb a{color:var(--muted)}
+  .pdp{display:flex;gap:64px;flex-wrap:wrap;align-items:flex-start}
+  .pdp .gallery{flex:1 1 420px;min-width:300px}
+  .pdp .gallery .imgwrap{aspect-ratio:4/5;background:var(--surface-2);border-radius:3px;overflow:hidden}
+  .pdp .gallery img{width:100%;height:100%;object-fit:cover}
+  .pdp .info{flex:1 1 340px;min-width:300px;position:sticky;top:110px}
+  .pdp .info h2{font-size:30px}
+  .pdp .pprice{font-size:18px;color:var(--ink);margin:2px 0 18px}
+  .pdp .pprice s{color:var(--muted);margin-right:8px}
+  .swatches{display:flex;flex-wrap:wrap;gap:10px;margin:6px 0 16px}
+  .swatch{width:30px;height:30px;border-radius:50%;border:1px solid var(--line);cursor:pointer;outline-offset:3px;padding:0}
+  .swatch.sel{outline:2px solid var(--accent)}
+  .trust{display:flex;flex-direction:column;gap:7px;margin:20px 0;color:var(--ink-soft);font-size:13px}
+  #filterToggle{display:none}
+  .pdp-sticky{display:none}
+  @media (max-width:768px){
+    :root{--pad:20px}
+    header{gap:14px;padding:14px var(--pad)}
+    header .nav{display:none}
+    .hero{padding:72px var(--pad) 56px}
+    .grid{grid-template-columns:repeat(2,1fr);gap:24px 14px}
+    .vprops{grid-template-columns:repeat(2,1fr);gap:28px 16px;margin:48px 0}
+    #search{min-width:0;width:110px}
+    .filters{display:none}
+    .filters.show{display:flex}
+    #filterToggle{display:block;width:100%;margin-bottom:16px}
+    .pdp{gap:24px}
+    .pdp .info{position:static}
+    .pdp-sticky{display:flex;position:fixed;bottom:0;left:0;right:0;gap:10px;padding:12px var(--pad);background:#fff;border-top:1px solid var(--line);z-index:15}
+    .pdp-sticky button{flex:1}
+    header .navlinks{display:none}
+    #menuBtn{display:inline-block;background:none;border:none;padding:4px;font-size:22px;cursor:pointer}
+    .insta{grid-template-columns:repeat(3,1fr)}
+    footer .fwrap{grid-template-columns:1fr 1fr;gap:28px}
+    .lifestyle{padding:56px var(--pad)}
+  }
+</style>
+</head>
+<body>
+<header id="hdr"></header>
+<div class="scrim" id="scrim" onclick="closeDrawers()"></div>
+<div class="drawer" id="navDrawer"><button style="float:right" onclick="closeDrawers()">×</button><h3 style="margin-top:0">Menu</h3><div id="navDrawerBody"></div></div>
+<main id="view">loading…</main>
+<footer id="ftr"></footer>
+
+<div class="drawer" id="cartDrawer"><button style="float:right" onclick="closeDrawers()">×</button><h3>Cart</h3><div id="cartBody"></div></div>
+<div class="drawer" id="wishDrawer"><button style="float:right" onclick="closeDrawers()">×</button><h3>Wishlist</h3><div id="wishBody"></div></div>
+
+<script src="content.js"></script>
+<script src="api.js"></script>
+<script>
+const $ = s => document.querySelector(s);
+const view = $("#view");
+const money = n => MOVI.currency + " " + Number(n).toFixed(2);
+// escape DB/user-derived text before inserting into innerHTML (stored-XSS guard)
+const esc = s => String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const jsstr = s => String(s==null?"":s).replace(/\\/g,"\\\\").replace(/'/g,"\\'").replace(/"/g,'\\"').replace(/</g,"\\x3c");
+let curFilter = {}, curProduct = null, sel = {};
+// ---- i18n ----
+let LANG = localStorage.getItem("movi_lang") || "en";
+const U = () => MOVI_UI[LANG] || MOVI_UI.en;
+const t = k => U()[k];
+function setLang(l){ LANG=l; localStorage.setItem("movi_lang",l); document.documentElement.lang=l; renderHeader(); renderFooter(); router(); }
+function pageData(slug){ const en=MOVI_PAGES.en[slug]; if(!en) return null; const tr=(MOVI_PAGE_TITLES[LANG]||{})[slug]; const loc=(MOVI_PAGES[LANG]||{})[slug]||{}; return Object.assign({}, en, loc, tr?{title:tr}:{}); }
+const IG_URL="https://instagram.com/movimientoshoes";
+const FOLLOW={en:"Follow on Instagram",de:"Auf Instagram folgen",es:"Síguenos en Instagram",fr:"Suivez-nous sur Instagram",it:"Seguici su Instagram",ru:"Подписаться в Instagram"};
+
+// ---- header / footer ----
+function renderHeader(){
+  const nav = MOVI_NAV.map(([s,_],i)=>`<a href="#/${s}" class="nav navlinks" data-slug="${s}">${esc((MOVI_NAV_LABEL(s)))}</a>`).join("");
+  const langs = MOVI_LANGS.map(([c,n])=>`<option value="${c}" ${c===LANG?"selected":""}>${n}</option>`).join("");
+  $("#hdr").innerHTML = `
+    <button id="menuBtn" onclick="openNav()" aria-label="Menu">☰</button>
+    <a href="#/" class="wordmark">MOVIMIENTO</a>
+    <span class="hgroup navlinks">${nav}</span>
+    <span class="hgroup" style="margin-left:auto">
+      <input id="search" placeholder="${esc(t('search'))}" onkeydown="if(event.key==='Enter')doSearch(this.value)">
+      <select class="langsel" onchange="setLang(this.value)" aria-label="Language">${langs}</select>
+      <a href="#" class="nav iconlink" onclick="openWish();return false">${esc(t('wishlist'))} <span class="badge" id="wishCount">0</span></a>
+      <a href="#" class="nav iconlink" onclick="openCart();return false">${esc(t('cart'))} <span class="badge" id="cartCount">0</span></a>
+    </span>`;
+  badges();
+}
+function MOVI_NAV_LABEL(slug){ const map={"women-shoes":"women_shoes","collections":"collections","gift-card":"gift_card","custom-order":"custom_order","size-guide":"size_guide","shipping-delivery":"shipping_info","contact":"contact"}; const u=U(); const labels={women_shoes:{en:"Women Shoes",de:"Damenschuhe",es:"Zapatos de mujer",fr:"Chaussures femme",it:"Scarpe donna",ru:"Женская обувь"},collections:{en:"Collections",de:"Kollektionen",es:"Colecciones",fr:"Collections",it:"Collezioni",ru:"Коллекции"},gift_card:{en:"Gift Card",de:"Geschenkkarte",es:"Tarjeta regalo",fr:"Carte cadeau",it:"Carta regalo",ru:"Подарочная карта"},custom_order:{en:"Custom Order",de:"Maßanfertigung",es:"Pedido personalizado",fr:"Sur mesure",it:"Su misura",ru:"Индивидуальный заказ"},size_guide:{en:"Size Guide",de:"Größenratgeber",es:"Guía de tallas",fr:"Guide des tailles",it:"Guida taglie",ru:"Размеры"},shipping_info:{en:"Shipping & Delivery",de:"Versand",es:"Envío",fr:"Livraison",it:"Spedizione",ru:"Доставка"},contact:{en:"Contact",de:"Kontakt",es:"Contacto",fr:"Contact",it:"Contatti",ru:"Контакты"}}; const key=map[slug]; return (labels[key]&&(labels[key][LANG]||labels[key].en))||slug; }
+function openNav(){ $("#navDrawerBody").innerHTML = MOVI_NAV.map(([s])=>`<div class="row"><a href="#/${s}" onclick="closeDrawers()">${esc(MOVI_NAV_LABEL(s))}</a></div>`).join("")+`<div class="row"><a href="#/about" onclick="closeDrawers()">${esc(pageData('about').title)}</a></div>`; $("#navDrawer").classList.add("open"); $("#scrim").classList.add("open"); }
+function renderFooter(){
+  const groups = MOVI_FOOTER.map(g=>`<div><h4>${esc(g.title)}</h4><ul>${g.links.map(([s,lbl])=>`<li><a href="#/${s}">${esc(lbl)}</a></li>`).join("")}</ul></div>`).join("");
+  $("#ftr").innerHTML = `<div class="fwrap">
+    <div class="fbrand"><a href="#/" class="wordmark">MOVIMIENTO</a><p>${esc(t('hero_sub'))}</p><p style="margin-top:12px"><a href="${IG_URL}" target="_blank" rel="noopener">Instagram · @movimientoshoes</a></p></div>
+    ${groups}
+  </div><div class="fbottom"><span>© ${new Date().getFullYear()} Movimiento Shoes</span><span>${esc(t('tagline'))}</span></div>`;
+}
+function doSearch(q){ curFilter={}; MOVI.search(q).then(r=>{ view.innerHTML=`<section class="block"><h2>${esc(q)}</h2><div class="grid">${r.items.map(cardHtml).join("")}</div></section>`; }); }
+
+async function badges(){ const c=await MOVI.cart(); $("#cartCount").textContent=c.items.reduce((s,i)=>s+i.qty,0); const w=await MOVI.wishlist(); $("#wishCount").textContent=w.items.length; }
+
+async function router(){
+  const h = location.hash || "#/";
+  const [_, route, arg] = h.split("/");
+  document.querySelectorAll("header .navlinks .nav").forEach(a=>a.classList.toggle("active",a.dataset.slug===route));
+  if (route === "product") return renderProduct(arg);
+  if (route === "collection") return renderCollection(arg);
+  if (route === "collections") return renderCollections();
+  if (route === "women-shoes") return renderListing();
+  if (pageData(route)) return renderPage(route);
+  return renderHome();
+}
+function renderPage(slug){
+  const pg = pageData(slug);
+  let body = pg.html || "";
+  if (pg.faq) body = pg.faq.map(([q,a])=>`<div class="faqitem"><h3>${esc(q)}</h3><p>${esc(a)}</p></div>`).join("");
+  let form = "";
+  if (pg.form) form = `<div class="form"><input id="cfName" placeholder="Name"><input id="cfEmail" type="email" placeholder="Email"><textarea id="cfMsg" rows="4" placeholder="Message"></textarea><button class="primary" onclick="submitContact()">Send</button><div id="cfMsgOut" class="muted"></div></div>`;
+  view.innerHTML = `<section class="block page"><div class="eyebrow">${esc(pg.title)}</div><svg class="mline" viewBox="0 0 120 16" aria-hidden="true"><path d="M2 11 Q 60 -5 118 11"/></svg><h1>${esc(pg.title)}</h1>${body}${form}</section>`;
+}
+function submitContact(){ const o=$("#cfMsgOut"); if(o){ o.textContent="Thank you. We'll be in touch shortly."; } }
+async function renderListing(){
+  view.innerHTML="loading…";
+  const cols = await MOVI.collections();
+  const r = await MOVI.products(curFilter);
+  view.innerHTML = filtersHtml(cols) + `<div class="grid" id="grid">${r.items.map(cardHtml).join("")}</div>`;
+  restoreFilterUI();
+}
+window.addEventListener("hashchange", router);
+
+function cardHtml(p){
+  const price = p.sale_price ? `<s>${money(p.price)}</s>${money(p.sale_price)}` : money(p.price);
+  const bits = [p.in_stock_label, (p.colors||[]).length ? (p.colors.length+" colors") : null].filter(Boolean).map(esc);
+  return `<div class="card"><a href="#/product/${encodeURIComponent(p.slug)}"><div class="imgwrap"><img src="${esc(p.thumb)}" alt="${esc(p.title)}"></div><div class="title">${esc(p.title)}</div></a><div class="price">${price}</div>${bits.length?`<div class="meta">${bits.join(" · ")}</div>`:""}</div>`;
+}
+
+function filtersHtml(cols){
+  return `<button id="filterToggle" onclick="document.querySelector('.filters').classList.toggle('show')">${esc(t('filter_sort'))}</button>
+    <div class="filters">
+      <select id="f_collection"><option value="">${esc(t('collections')||'')}—</option>${cols.items.map(c=>`<option value="${esc(c.slug)}">${esc(c.title)}</option>`).join("")}</select>
+      <select id="f_size"><option value="">${esc(t('size'))}</option>${["36","37","38","39","40"].map(s=>`<option>${s}</option>`).join("")}</select>
+      <input id="f_color" placeholder="${esc(t('color'))}">
+      <input id="f_pmin" type="number" placeholder="min" style="width:64px">
+      <input id="f_pmax" type="number" placeholder="max" style="width:64px">
+      <select id="f_sort"><option value="">↕</option><option value="price_asc">$ ↑</option><option value="price_desc">$ ↓</option></select>
+      <button onclick="applyFilters()">OK</button>
+      <button onclick="curFilter={};router()">Reset</button>
+    </div>`;
+}
+function restoreFilterUI(){ for (const [k,id] of [["collection","f_collection"],["size","f_size"],["color","f_color"],["price_min","f_pmin"],["price_max","f_pmax"],["sort","f_sort"]]) if(curFilter[k]!=null && $("#"+id)) $("#"+id).value=curFilter[k]; }
+function applyFilters(){ curFilter={ collection:$("#f_collection").value, size:$("#f_size").value, color:$("#f_color").value, price_min:$("#f_pmin").value, price_max:$("#f_pmax").value, sort:$("#f_sort").value }; router(); }
+
+async function renderHome(){
+  view.innerHTML = "loading…";
+  const r = await MOVI.products(curFilter);
+  const cols = await MOVI.collections();
+  const u = U();
+  view.innerHTML = `
+    <div class="hero">
+      <div class="eyebrow">${esc(u.hero_eyebrow)}</div>
+      <h1>${esc(u.hero_h1a)}<br>${esc(u.hero_h1b)}</h1>
+      <svg class="mline" viewBox="0 0 120 16" aria-hidden="true"><path d="M2 11 Q 60 -5 118 11"/></svg>
+      <p>${esc(u.hero_sub)}</p>
+      <div class="cta"><button class="primary" onclick="document.getElementById('grid').scrollIntoView({behavior:'smooth'})">${esc(u.cta_shop)}</button><button class="ghost" onclick="location.hash='#/about'">${esc(u.cta_discover)}</button></div>
+    </div>
+    <div class="vprops">${u.vp.map(([tt,dd])=>`<div class="vp"><h3>${esc(tt)}</h3><p>${esc(dd)}</p></div>`).join("")}</div>
+    ${filtersHtml(cols)}
+    <div class="grid" id="grid">${r.items.map(cardHtml).join("")}</div>
+    <div class="lifestyle"><h2>${esc(u.occasion_title)}</h2><p>${esc(u.occasion_sub)}</p></div>
+    <div class="statement block"><svg class="mline" viewBox="0 0 120 16" aria-hidden="true"><path d="M2 11 Q 60 -5 118 11"/></svg><p>${esc(u.statement)}</p></div>
+    <section class="block" style="text-align:center"><div class="eyebrow">@movimientoshoes</div><svg class="mline" viewBox="0 0 120 16" aria-hidden="true"><path d="M2 11 Q 60 -5 118 11"/></svg><div class="insta">${r.items.slice(0,6).map(p=>`<a class="cell" href="${IG_URL}" target="_blank" rel="noopener"><img src="${esc(p.thumb)}" alt="${esc(p.title)}"></a>`).join("")}</div><div style="margin-top:18px"><a href="${IG_URL}" target="_blank" rel="noopener"><button class="ghost">${esc(FOLLOW[LANG]||FOLLOW.en)}</button></a></div></section>
+    <div class="newsletter">
+      <h3>${esc(u.newsletter_title)}</h3>
+      <p class="muted">${esc(u.newsletter_sub)}</p>
+      <div class="field"><input id="nlEmail" type="email" placeholder="you@example.com"><button class="primary" onclick="submitNewsletter()">${esc(u.signup)}</button></div>
+      <div id="nlMsg" class="muted" style="margin-top:8px"></div>
+    </div>`;
+  restoreFilterUI();
+}
+
+async function renderProduct(slug){
+  view.innerHTML = "loading…";
+  const p = await MOVI.product(slug);
+  if(!p || p.error){view.innerHTML="Not found";return;}
+  curProduct = p; sel = {}; p.options.forEach(o=>sel[o.name]=null);
+  const pr0 = p.variants[0];
+  const priceHtml = pr0.sale_price ? `<s>${money(pr0.price)}</s>${money(pr0.sale_price)}` : money(pr0.price);
+  view.innerHTML = `
+    <div class="breadcrumb"><a href="#/">Home</a> / <a href="#/collections">Collections</a> / ${esc(p.title)}</div>
+    <div class="pdp">
+      <div class="gallery"><div class="imgwrap"><img src="${esc((p.media[0]||{}).url)}" alt="${esc(p.title)}"></div></div>
+      <div class="info">
+        <h2>${esc(p.title)}</h2>
+        <div class="pprice">${priceHtml}</div>
+        <p>${esc(p.description||"")}</p>
+        ${p.options.map(o=>`<div><b>${o.name==='Size'?esc(t('size')):o.name==='Color'?esc(t('color')):esc(o.name)}</b><div class="${o.name==='Color'?'swatches':'opt'}" data-opt="${esc(o.name)}">${o.values.map(v=> o.name==='Color'
+            ? `<button class="swatch" data-val="${esc(v)}" title="${esc(v)}" style="background:${colorHex(v)}" onclick="pick('${jsstr(o.name)}','${jsstr(v)}',this)"></button>`
+            : `<button data-val="${esc(v)}" onclick="pick('${jsstr(o.name)}','${jsstr(v)}',this)">${esc(v)}</button>`).join("")}</div></div>`).join("")}
+        <div id="selMsg" class="muted" style="margin:6px 0"></div>
+        <p style="display:flex;gap:10px"><button class="primary" id="addBtn" onclick="addCurrent()">${esc(t('add_to_cart'))}</button>
+        <button onclick="wishCurrent()">♡ ${esc(t('wishlist'))}</button></p>
+        <div class="trust"><span>${esc(t('made_to_order'))}</span><span>${esc(U().vp[0][0])}</span><span>${esc(U().vp[4][1])}</span></div>
+        <details><summary>${esc(t('comfort'))}</summary><div style="padding-top:8px">${p.comfort_html||""}</div></details>
+        <details><summary>${esc(t('craftsmanship'))}</summary><div style="padding-top:8px">${p.craftsmanship_html||""}</div></details>
+        <details><summary>${esc(t('shipping_info'))}</summary><div style="padding-top:8px">${p.shipping_html||""}</div></details>
+        <div style="margin-top:24px"><b>${esc(t('reviews'))}</b> ${p.rating_avg?("★"+p.rating_avg):'<span class="muted">—</span>'}
+        ${(p.reviews||[]).map(r=>`<div class="muted" style="margin-top:6px">★${esc(r.rating)} — ${esc(r.author||"")}: ${esc(r.body)}</div>`).join("")}
+        <div style="margin-top:12px;padding:14px;background:var(--surface);border-radius:2px">
+          <b>${esc(t('write_review'))}</b>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px">
+            <select id="rvRating">${[5,4,3,2,1].map(n=>`<option value="${n}">★${n}</option>`).join("")}</select>
+            <input id="rvAuthor" placeholder="${esc(t('write_review'))}">
+            <input id="rvBody" placeholder="..." style="flex:1;min-width:160px">
+            <button onclick="submitReview(${p.id})">${esc(t('submit'))}</button>
+          </div>
+          <div id="rvMsg" class="muted" style="margin-top:6px"></div>
+        </div></div>
+      </div>
+    </div>
+    <div class="pdp-sticky"><button class="primary" onclick="addCurrent()">${esc(t('add_to_cart'))} — ${money(pr0.sale_price||pr0.price)}</button></div>
+    <section class="block"><h3>${esc(t('related'))}</h3><div class="grid">${(p.related||[]).map(cardHtml).join("")}</div></section>`;
+}
+function colorHex(v){ const m={silver:'#C7C7C7',black:'#2a2a2a',gold:'#C9A86A','rose gold':'#E0B7A0',nude:'#E3C5A8',leopard:'#B07A3C',green:'#3C6E47',burgundy:'#6E2A33',fuchsia:'#C2407A',teal:'#2C7A7A','light gold':'#D9C18A',brown:'#7A5230',pink:'#E8A6BE',blue:'#3A5C8A'}; return m[String(v).toLowerCase()]||'#D8CBBE'; }
+function pick(opt,val,el){ sel[opt]=val; document.querySelectorAll('[data-opt="'+(window.CSS&&CSS.escape?CSS.escape(opt):opt)+'"] [data-val]').forEach(b=>b.classList.remove("sel")); el.classList.add("sel"); }
+function currentVariant(){ return curProduct.variants.find(v=>Object.keys(sel).every(k=>v.options[k]===sel[k])); }
+function snapOf(v){ return { variant_id:v.id, title:curProduct.title, sku:v.sku, options:v.options, unit_price:(v.sale_price||v.price), thumb:(curProduct.media[0]||{}).url }; }
+async function addCurrent(){
+  if(Object.values(sel).some(v=>!v)){ $("#selMsg").textContent="Select all options first."; return; }
+  const v=currentVariant(); if(!v){$("#selMsg").textContent="Unavailable combination.";return;}
+  await MOVI.cartAdd(snapOf(v),1); await badges(); openCart();
+}
+async function wishCurrent(){ const v=currentVariant()||curProduct.variants[0]; await MOVI.wishlistToggle(snapOf(v)); await badges(); }
+
+function renderAbout(){
+  view.innerHTML = `<section class="block about">
+    <div class="eyebrow">Our Story</div>
+    <svg class="mline" viewBox="0 0 120 16" aria-hidden="true"><path d="M2 11 Q 60 -5 118 11"/></svg>
+    <p class="lead">Movement Without Compromise.</p>
+    <p>At Movimiento Shoes, we believe elegance should never come at the expense of comfort.</p>
+    <p>Born from decades of experience crafting footwear for dancers, we understand movement better than most. Every step, every turn, every hour spent on your feet has inspired us to create shoes that support women throughout their day and into their night.</p>
+    <p>Our shoes are meticulously handcrafted by skilled artisans using premium materials and techniques refined through years of footwear expertise.</p>
+    <p>Whether you're attending a business meeting, enjoying dinner with friends, traveling, celebrating, or simply moving through your everyday life, Movimiento Shoes are designed to accompany you comfortably and beautifully.</p>
+    <p class="lead" style="margin-top:24px">Because confidence begins when discomfort ends.</p>
+    <div class="cta" style="display:flex;justify-content:center;margin-top:16px"><button class="primary" onclick="location.hash='#/'">Shop Collection</button></div>
+  </section>`;
+}
+async function renderCollections(){ view.innerHTML="loading…"; const c=await MOVI.collections(); view.innerHTML=`<section class="block"><h1 style="font-family:var(--head);font-weight:400">Collections</h1><p class="muted" style="max-width:620px">${esc(t('collections_intro'))}</p><div class="grid" style="margin-top:24px">${c.items.map(x=>`<div class="card"><a href="#/collection/${encodeURIComponent(x.slug)}"><div class="imgwrap" style="display:flex;align-items:center;justify-content:center;font-family:var(--head);font-size:22px;color:var(--ink)">${esc(x.title)}</div><div class="title">${esc(x.title)}</div></a><div class="meta">${x.count} ${esc(t('made_to_order')?'':'')}products</div></div>`).join("")}</div></section>`; }
+async function renderCollection(slug){ view.innerHTML="loading…"; const c=await MOVI.collection(slug); if(!c||c.error){view.innerHTML="Not found";return;} view.innerHTML=`<a href="#/collections">← collections</a><h2>${esc(c.title)}</h2><p>${esc(c.description||"")}</p><div class="grid">${(c.products||[]).map(cardHtml).join("")}</div>`; }
+
+function closeDrawers(){ document.querySelectorAll(".drawer").forEach(d=>d.classList.remove("open")); $("#scrim").classList.remove("open"); }
+async function openCart(){ await renderCart(); $("#cartDrawer").classList.add("open"); $("#scrim").classList.add("open"); }
+async function renderCart(){
+  const c=await MOVI.cart();
+  let body = c.items.length? c.items.map(i=>`<div class="row"><div>${esc(i.title)}<br><span class="muted">${esc(Object.values(i.options||{}).join(" / "))} · ${esc(i.sku)}</span></div><div>${money(i.unit_price)} ×
+    <input type="number" min="0" value="${i.qty}" style="width:48px" onchange="MOVI.cartUpdate(${i.variant_id},+this.value).then(renderCart).then(badges)"></div></div>`).join("") : '<p class="muted">Empty.</p>';
+  body += `<div class="row"><b>Subtotal</b><b>${money(c.subtotal)}</b></div>`;
+  body += c.checkout_enabled ? `<button class="primary" style="width:100%">Checkout</button>` : `<div class="note">${esc(t('checkout_soon'))}</div>`;
+  $("#cartBody").innerHTML = body;
+}
+async function openWish(){ const w=await MOVI.wishlist(); $("#wishBody").innerHTML = w.items.length? w.items.map(i=>`<div class="row">${esc(i.title)}<button onclick="MOVI.wishlistToggle({variant_id:${+i.variant_id}}).then(openWish).then(badges)">remove</button></div>`).join("") : '<p class="muted">Empty.</p>'; $("#wishDrawer").classList.add("open"); $("#scrim").classList.add("open"); }
+
+async function submitNewsletter(){
+  const email=$("#nlEmail").value.trim();
+  $("#nlMsg").textContent="…";
+  try{ const r=await MOVI.newsletter(email); $("#nlMsg").textContent = r.error?"Enter a valid email." : (r.already?`You're already in — your code: ${r.code}`:`Welcome. Your 3% code: ${r.code}`); }
+  catch{ $("#nlMsg").textContent="Something went wrong."; }
+}
+async function submitReview(pid){
+  const rating=+$("#rvRating").value, body=$("#rvBody").value.trim(), author=$("#rvAuthor").value.trim();
+  $("#rvMsg").textContent="…";
+  try{ const r=await MOVI.review({product_id:pid,rating,body,author}); $("#rvMsg").textContent = r.ok?"Thanks. Your review is pending moderation.":"Could not submit."; }
+  catch{ $("#rvMsg").textContent="Something went wrong."; }
+}
+window.addEventListener("scroll",()=>{ document.querySelector("header").classList.toggle("scrolled", window.scrollY>8); },{passive:true});
+document.documentElement.lang = LANG;
+renderHeader(); renderFooter(); router();
+</script>
+</body>
+</html>
